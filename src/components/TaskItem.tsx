@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trash2, CheckCircle2, Circle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Task } from '../types';
+import { Task } from '../type';
 import { useTaskContext } from '../context/TaskContext';
 
 interface TaskItemProps {

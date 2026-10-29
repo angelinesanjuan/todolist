@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { useTaskContext } from '../context/TaskContext';
 import { TaskItem } from '../components/TaskItem';
-import { TaskStatus } from '../types';
+import { TaskStatus } from '../type';
 
 export const TasksPage: React.FC = () => {
   const { tasks, groups, addTask, stats } = useTaskContext();

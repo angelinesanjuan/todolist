@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Task, TaskGroup, Developer } from '../types';
+import { Task, TaskGroup, Developer } from '../type';
 
 interface TaskContextType {
   tasks: Task[];
@@ -133,34 +133,26 @@ const DEFAULT_DEVELOPERS: Developer[] = [
   {
     id: 'dev-1',
     name: 'Angeline San Juan',
-    role: 'Lead Developer & UI Designer',
-    contribution: 'React Router architecture, state orchestration, and responsive design with Tailwind CSS.',
     email: 'sanjuanangeline008@gmail.com',
-    studentId: '2023-10482',
+    studentId: '202415131',
   },
   {
     id: 'dev-2',
-    name: 'Christian Dave Reyes',
-    role: 'Frontend Developer',
-    contribution: 'Task group dynamic routing (:groupId), CRUD state operations, and event handling.',
-    email: 'cd.reyes@cvsu.edu.ph',
-    studentId: '2023-10741',
+    name: 'Yvonne Marie Rodriguez',
+    email: 'yvonnemarie.rodriguez@cvsu.edu.ph',
+    studentId: '202415308',
   },
   {
     id: 'dev-3',
-    name: 'Maria Nicole Bautista',
-    role: 'Component Architect',
-    contribution: 'Component modularization, filter controls, dashboard metrics calculation, and layout.',
-    email: 'mn.bautista@cvsu.edu.ph',
-    studentId: '2023-10993',
+    name: 'Angelica Callano',
+    email: 'angelica.callano@cvsu.edu.ph',
+    studentId: '202415462',
   },
   {
     id: 'dev-4',
-    name: 'Joshua Kyle Mendoza',
-    role: 'QA & Documentation Engineer',
-    contribution: 'Testing across mobile & desktop, user manual documentation, and verification.',
-    email: 'jk.mendoza@cvsu.edu.ph',
-    studentId: '2023-11204',
+    name: 'Robert Rowel Solon',
+    email: 'robertrowel.solon@cvsu.edu.ph',
+    studentId: '202415527',
   },
 ];
 
@@ -169,7 +161,7 @@ const TaskContext = createContext<TaskContextType | undefined>(undefined);
 export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [tasks, setTasks] = useState<Task[]>(() => {
     try {
-      const saved = localStorage.getItem('cvsu_tasks_v1');
+      const saved = localStorage.getItem('cvsu_tasks_v2');
       if (saved) return JSON.parse(saved);
     } catch {}
     return DEFAULT_TASKS;
@@ -177,7 +169,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [groups, setGroups] = useState<TaskGroup[]>(() => {
     try {
-      const saved = localStorage.getItem('cvsu_groups_v1');
+      const saved = localStorage.getItem('cvsu_groups_v2');
       if (saved) return JSON.parse(saved);
     } catch {}
     return DEFAULT_GROUPS;
@@ -185,7 +177,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [developers, setDevelopers] = useState<Developer[]>(() => {
     try {
-      const saved = localStorage.getItem('cvsu_devs_v1');
+      const saved = localStorage.getItem('cvsu_devs_v2');
       if (saved) return JSON.parse(saved);
     } catch {}
     return DEFAULT_DEVELOPERS;
@@ -193,7 +185,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('cvsu_tasks_v1', JSON.stringify(tasks));
+      localStorage.setItem('cvsu_tasks_v2', JSON.stringify(tasks));
     } catch (e) {
       console.warn('LocalStorage save error', e);
     }
@@ -201,7 +193,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('cvsu_groups_v1', JSON.stringify(groups));
+      localStorage.setItem('cvsu_groups_v2', JSON.stringify(groups));
     } catch (e) {
       console.warn('LocalStorage save error', e);
     }
@@ -209,7 +201,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('cvsu_devs_v1', JSON.stringify(developers));
+      localStorage.setItem('cvsu_devs_v2', JSON.stringify(developers));
     } catch (e) {
       console.warn('LocalStorage save error', e);
     }
@@ -288,9 +280,9 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setGroups(DEFAULT_GROUPS);
     setDevelopers(DEFAULT_DEVELOPERS);
     try {
-      localStorage.setItem('cvsu_tasks_v1', JSON.stringify(DEFAULT_TASKS));
-      localStorage.setItem('cvsu_groups_v1', JSON.stringify(DEFAULT_GROUPS));
-      localStorage.setItem('cvsu_devs_v1', JSON.stringify(DEFAULT_DEVELOPERS));
+      localStorage.setItem('cvsu_tasks_v2', JSON.stringify(DEFAULT_TASKS));
+      localStorage.setItem('cvsu_groups_v2', JSON.stringify(DEFAULT_GROUPS));
+      localStorage.setItem('cvsu_devs_v2', JSON.stringify(DEFAULT_DEVELOPERS));
     } catch {}
   };
 

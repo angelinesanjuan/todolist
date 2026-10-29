@@ -51,8 +51,6 @@ export const DevelopersPage: React.FC = () => {
     const newMember: Developer = {
       id: `dev-${Date.now()}`,
       name: 'New Group Member',
-      role: '',
-      contribution: '',
       email: 'student@cvsu.edu.ph',
       studentId: '2023-XXXXX',
     };
